@@ -1,24 +1,24 @@
-# < SNIPPETS-APP >
+# < TBay >
 
-# Pre-work - *snippets-app*
+# Pre-work - *tbay*
 
-**SNIPPETS-APP** is an assignment from Unit 2 of Thinkful Python Programming Course that I am currently working through.
+**TBay** is an assignment from Unit 2 of Thinkful Python Programming Course that I am currently working through.
 
 Submitted by: **Ben Altieri**
 
-Time spent: **0.10** hours spent in total
+Time spent: **1** hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-* [x] User can **successfully add and remove items** to and from PostgreSQL database called snippets.
-* [x] User can **obtain a catalog view of snippets in the database**.
-* [x] User can **search for substring in messages** column.
+* [ ] User can **successfully add and remove items** to and from PostgreSQL database called snippets.
+* [ ] User can **obtain a catalog view of snippets in the database**.
+* [ ] User can **search for substring in messages** column.
 
 The following **optional** features are implemented:
 
-* [x] Persist the snippets [into PostgresQL](http://google.com) instead of a text file
+* [ ] Persist the snippets [into PostgresQL](http://google.com) instead of a text file
 * [ ] Improve style of the blah blah items in the list [using a custom adapter](http://google.com)
 * [ ] Add support for completion due dates for blah blah items (and display within listview item)
 * [ ] Use a [DialogFragment](http://google.com) instead of new Activity for editing items
