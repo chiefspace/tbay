@@ -1,0 +1,6 @@
+
+
+Make virtualenv environments for both versions of python in the tbay project directory:
+
+python -m virtualenv venv2
+python3 -m venv venv3
