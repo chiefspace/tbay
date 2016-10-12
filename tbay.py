@@ -12,7 +12,6 @@ session = Session()
 Base = declarative_base()
 
 from datetime import datetime
-
 from sqlalchemy import Table, Column, Integer, String, DateTime, Float, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -22,7 +21,7 @@ user_bid_item_table = Table('user_bid_item_association', Base.metadata,
     Column(('bid_id'), Integer, ForeignKey('bids.id')),
     Column(('item_id'), Integer, ForeignKey('items.id'))
 )
-from sqlalchemy import Column, Integer, String, DateTime, Float
+
 
 class Item(Base):
     __tablename__ = "items"
@@ -31,7 +30,9 @@ class Item(Base):
     name = Column(String, nullable=False)
     description = Column(String)
     start_time = Column(DateTime, default=datetime.utcnow)
-    auctioner = relationship("User", backref="items")
+    item_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+    
+    user_id = relationship("User", secondary="user_bid_item_association", backref="items")
 
 
 class User(Base):
@@ -40,6 +41,8 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String, nullable=False)
     password = Column(String, nullable=False)
+    
+    user_id = relationship("Item", secondary="user_bid_item_association", backref="users")
 
 
 class Bid(Base):
@@ -47,7 +50,19 @@ class Bid(Base):
 
     id = Column(Integer, primary_key=True)
     price = Column(Float, nullable=False)
-    bidder = relationship("User", backref="bids")
+    
+    bid_id = Column(Integer, ForeignKey('items.id'), nullable=False)
 
 
 Base.metadata.create_all(engine)
+
+def main():
+    ben = User(username="ben", password="changeit")
+    will = User(username="will", password="changeit")
+    fred = User(username="fred", password="changeit")
+    session.add_all([ben, will, fred])
+    session.commit()
+
+    
+if __name__ == "__main__":
+    main()
