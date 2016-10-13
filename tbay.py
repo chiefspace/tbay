@@ -4,6 +4,9 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
+#from collections import defaultdict
+
+dictlist = []
 
 
 engine = create_engine('postgresql://ubuntu:thinkful@localhost:5432/tbay')
@@ -30,9 +33,7 @@ class Item(Base):
     name = Column(String, nullable=False)
     description = Column(String)
     start_time = Column(DateTime, default=datetime.utcnow)
-    item_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-    
-    user_id = relationship("User", secondary="user_bid_item_association", backref="items")
+    user = relationship("User", secondary="user_bid_item_association", backref="items")
 
 
 class User(Base):
@@ -41,8 +42,7 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     username = Column(String, nullable=False)
     password = Column(String, nullable=False)
-    
-    user_id = relationship("Item", secondary="user_bid_item_association", backref="users")
+    item = relationship("Item", secondary="user_bid_item_association", backref="users")
 
 
 class Bid(Base):
@@ -50,16 +50,26 @@ class Bid(Base):
 
     id = Column(Integer, primary_key=True)
     price = Column(Float, nullable=False)
-    
     bid_id = Column(Integer, ForeignKey('items.id'), nullable=False)
 
 
 Base.metadata.create_all(engine)
 
 def main():
+#    item_context = Item(name="Nolan_Ryan_Baseball", description="Nolan Ryan signed baseball")
+
+#    (name="Nolan_Ryan_Baseball", description="Nolan Ryan signed baseball")
+
+    baseball = Item(name="Nolan_Ryan_Baseball", description="Nolan Ryan signed baseball")
+
     ben = User(username="ben", password="changeit")
+    ben.item = [baseball,]
+    
     will = User(username="will", password="changeit")
+    
+    
     fred = User(username="fred", password="changeit")
+    
     session.add_all([ben, will, fred])
     session.commit()
 
