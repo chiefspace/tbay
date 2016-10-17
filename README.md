@@ -12,13 +12,13 @@ Time spent: **1** hours spent in total
 
 The following **required** functionality is completed:
 
+* [x] User can **auction multiple items**.
+* [x] User can **bid on multiple items**.
+* [x] Multiple Users can **place a bid on an item**.
 * [x] User can **Add three users to the database** to and from PostgreSQL database called tbay via sqlalchemy.
 * [x] User can **Make one user auction a baseball**.
 * [x] User can **Have each other user place two bids on the baseball**.
 * [x] User can **Perform a query to find out which user placed the highest bid**.
-* [x] User can **auction multiple items**.
-* [x] User can **bid on multiple items**.
-* [x] Multiple Users can **place a bid on an item**.
 
 The following **optional** features are implemented:
 
