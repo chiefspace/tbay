@@ -12,13 +12,16 @@ Time spent: **1** hours spent in total
 
 The following **required** functionality is completed:
 
-* [ ] User can **successfully add and remove items** to and from PostgreSQL database called snippets.
-* [ ] User can **obtain a catalog view of snippets in the database**.
-* [ ] User can **search for substring in messages** column.
+* [x] User can **Add three users to the database** to and from PostgreSQL database called tbay via sqlalchemy.
+* [x] User can **Make one user auction a baseball**.
+* [x] User can **Have each other user place two bids on the baseball**.
+* [x] User can **Perform a query to find out which user placed the highest bid**.
+* [x] User can **auction multiple items**.
+* [x] User can **bid on multiple items**.
+* [x] Multiple Users can **place a bid on an item**.
 
 The following **optional** features are implemented:
 
-* [ ] Persist the snippets [into PostgresQL](http://google.com) instead of a text file
 * [ ] Improve style of the blah blah items in the list [using a custom adapter](http://google.com)
 * [ ] Add support for completion due dates for blah blah items (and display within listview item)
 * [ ] Use a [DialogFragment](http://google.com) instead of new Activity for editing items
