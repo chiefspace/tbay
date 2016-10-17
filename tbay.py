@@ -11,9 +11,8 @@ session = Session()
 Base = declarative_base()
 
 from datetime import datetime
-from sqlalchemy import Table, Column, Integer, String, DateTime, Float, ForeignKey
+from sqlalchemy import Table, Column, Integer, String, DateTime, Float, ForeignKey, desc
 from sqlalchemy.orm import relationship
-
 
 user_bid_item_table = Table('user_bid_item_association', Base.metadata,
     Column(('user_id'), Integer, ForeignKey('users.id')),
@@ -70,7 +69,15 @@ def main():
 
     session.add_all([ben, will, fred])
     session.commit()
-
-
+    
+    all_user_objects=session.query(User).all()
+    print(all_user_objects)
+    
+    all_usernames=session.query(User.username).order_by(User.username).all()
+    print(all_usernames)
+    
+    highest_bidder=session.query(Bid.price, User.username).order_by(desc(Bid.price)).limit(1).all()
+    print(highest_bidder)
+    
 if __name__ == "__main__":
     main()
